@@ -1,0 +1,58 @@
+{
+  "name": "image-api",
+  "version": "1.0.0",
+  "description": "Fast light weight node based image api",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint lib",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
+    "build": "npm run build:types && npm run build:js",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "babel lib --out-dir dist --extensions .ts,.js",
+    "build:test": "babel ./ --ignore node_modules,dist,test-dist --out-dir ./test-dist --extensions .ts,.js",
+    "test": "cross-env NODE_ENV=test mocha --full-trace --require test.js test/**/*.spec.ts",
+    "coverage": "nyc --reporter=lcov --reporter=text npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanEvans485/image-api.git"
+  },
+  "keywords": [
+    "image",
+    "api",
+    "node",
+    "fast",
+    "light"
+  ],
+  "author": "Devan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DanEvans485/image-api/issues"
+  },
+  "homepage": "https://github.com/DanEvans485/image-api#readme",
+  "dependencies": {
+    "@teedev/core": "^1.1.3",
+    "@types/sharp": "^0.23.0",
+    "fastify": "^2.10.0",
+    "fastify-static": "^2.5.0",
+    "sharp": "^0.23.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.0",
+    "@babel/core": "^7.7.2",
+    "@babel/register": "^7.7.0",
+    "@teedev/babel-preset-base": "^1.0.0",
+    "@teedev/eslint-config-base": "^1.0.0",
+    "@types/chai": "^4.2.4",
+    "@types/lodash": "^4.14.146",
+    "@types/mocha": "^5.2.7",
+    "babel-plugin-transform-imports": "^2.0.0",
+    "chai": "^4.2.0",
+    "cross-env": "^6.0.3",
+    "mocha": "^6.2.2",
+    "nyc": "^14.1.1",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.7.2"
+  }
+}
